@@ -2,11 +2,11 @@ angular.module('video-player')
 
 .component('app', {
   bindings: {
-    appData: '<'
+    appdata: '<'
   },
   template: 
-    `<div id="app container" ng-controller="AppCtrl">
-      <nav class="navbar">
+    `<div id="app container" ng-model="appdata" >
+      <nav class="navbar" ng-controller="AppCtrl">
         <div class="col-md-6 col-md-offset-3">
           <search><h5><em>search</em> component goes here</h5></search>
         </div>
@@ -20,16 +20,18 @@ angular.module('video-player')
         </div>
       <div>
     </div>
-    `
-})
+    `,
+  controller: 'AppCtrl'
 
-.controller('AppCtrl', function($scope) {
-  $scope.selectVideo = function() {
+  })
+
+.controller('AppCtrl', function() {
+  this.selectVideo = function() {
     
   };
-  $scope.searchResults = function() {
+  this.searchResults = function() {
 
   };
-
-  
+  this.currentVideo = window.exampleVideoData[0]
+  this.videos = window.exampleVideoData;
 })

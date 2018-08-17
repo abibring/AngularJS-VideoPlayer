@@ -4,11 +4,16 @@ angular.module('video-player')
     videoList: '<'
   },
   template: `
-    <ul class="video-list" ng-controller="">
-      <video-list-entry ng-repeat="_item_ in window.exampleVideoData track by $index" ng-model="window.exampleVideoData"> component goes here</video-list-entry>
+    <ul class="video-list" ng-model="window.exampleVideoData">
+      <video-list-entry ng-repeat="_item_ in $ctrl.videos track by $index" ng-click="$ctrl.onClick()"> component goes here</video-list-entry>
     </ul>
     `,
-  controller: function('') {
+  controller: 'videolistctrl'
+})
+
+.controller('videolistctrl', function() {
+  this.videos = window.exampleVideoData;
+  this.onClick = function() {
 
   }
-});
+})
