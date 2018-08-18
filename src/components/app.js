@@ -1,8 +1,9 @@
-angular.module('video-player')
+angular
+  .module('video-player')
 
-.component('app', {
-  template: 
-    `<div id="app container" ng-controller="AppCtrl">
+  .component('app', {
+    template: `
+    <div id="app container" ng-controller="AppCtrl">
       <nav class="navbar">
         <div class="col-md-6 col-md-offset-3">
           <search searchyoutube="$ctrl.searchResults"></search>
@@ -19,26 +20,18 @@ angular.module('video-player')
           handle="$ctrl.selectVideo"></video-list>
         </div>
       <div>
-    </div>
-    `,
-  controller: 'AppCtrl'
+    </div>`,
+    controller: 'AppCtrl'
   })
 
-.controller('AppCtrl', function(youTube) {
-  // this.search = youTube;
-  /*
-  this.searchResults = youTube.search(this.userInput, (data) => {
-    this.videos = data;
-    this.video = data[0];
+  .controller('AppCtrl', function() {
+    this.searchResults = data => {
+      this.videos = data;
+      this.video = data[0];
+    };
+    this.selectVideo = video => {
+      this.currentVideo = video;
+    };
+    this.currentVideo = window.exampleVideoData[0];
+    this.videos = window.exampleVideoData;
   });
-*/
-  this.searchResults = (data) => {
-    this.videos = data;
-    this.video = data[0];
-  }
-  this.selectVideo = (video) => {
-    this.currentVideo = video;
-  }
-  this.currentVideo = window.exampleVideoData[0]
-  this.videos = window.exampleVideoData;
-})
