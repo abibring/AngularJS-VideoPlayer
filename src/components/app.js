@@ -2,10 +2,10 @@ angular.module('video-player')
 
 .component('app', {
   template: 
-    `<div id="app container">
-      <nav class="navbar" ng-controller="AppCtrl">
+    `<div id="app container" ng-controller="AppCtrl">
+      <nav class="navbar">
         <div class="col-md-6 col-md-offset-3">
-          <search searchYoutube="$ctrl.result()"></search>
+          <search searchyoutube="$ctrl.searchResults"></search>
         </div>
       </nav>
       <div class="row">
@@ -13,28 +13,31 @@ angular.module('video-player')
           <video-player video="$ctrl.currentVideo"></video-player>
         </div>
         <div class="col-md-5">
-          <video-list videos="$ctrl.videos" onClick = "$ctrl.onClick"></video-list>
+          <video-list 
+          videos="$ctrl.videos" 
+          currentVideo=""
+          handle="$ctrl.selectVideo"></video-list>
         </div>
       <div>
     </div>
     `,
   controller: 'AppCtrl'
-
   })
 
 .controller('AppCtrl', function(youTube) {
   // this.search = youTube;
-  this.result = function(q) {
-    return youTube.search(q)
+  /*
+  this.searchResults = youTube.search(this.userInput, (data) => {
+    this.videos = data;
+    this.video = data[0];
+  });
+*/
+  this.searchResults = (data) => {
+    this.videos = data;
+    this.video = data[0];
   }
-  this.selectVideo = function() {
-    
-  };
-  this.searchResults = function() {
-
-  };
-  this.onClick = function(video) {
-    this.video = video;
+  this.selectVideo = (video) => {
+    this.currentVideo = video;
   }
   this.currentVideo = window.exampleVideoData[0]
   this.videos = window.exampleVideoData;

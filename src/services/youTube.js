@@ -6,9 +6,15 @@ angular.module('video-player')
       return $http({
         url: `https://www.googleapis.com/youtube/v3/search`,
         method: 'GET',
-        params: {part: 'snippet', key: window.YOUTUBE_API_KEY, maxResults: 5, query: q, data: 'video'}
+        params: {
+          part: 'snippet', 
+          key: window.YOUTUBE_API_KEY, 
+          maxResults: 5, 
+          q: q, 
+          data: 'video'
+        }
       })
-        .then((data) => {
+        .then(({data}) => {
           if (cb) {
             console.log(data);
             cb(data.items);
@@ -16,6 +22,6 @@ angular.module('video-player')
         })
         .catch((err) => console.error(err));
     }
-    // use then promise to update videos
+   
   }
 });
