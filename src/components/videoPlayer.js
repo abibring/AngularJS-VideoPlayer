@@ -2,13 +2,13 @@ angular.module('video-player')
 
 .component('videoPlayer', {
   bindings: {
-    vidplayer: '<'
+    video: '<'
   },
   template: `
-  <div class="video-player" ng-model="$ctrl.vidplayer">
+  <div class="video-player" ng-if="$ctrl.video">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" 
-        ngSrc="https://www.youtube.com/embed/{{d.videoId}}" 
+        ng-src="{{'https://www.youtube.com/embed/'+$ctrl.video.id.videoId}}"
         allowFullScreen></iframe>
     </div>
     <div class="video-player-details">
@@ -16,11 +16,13 @@ angular.module('video-player')
       <div>{{$ctrl.video.snippet.description}}</div>
     </div>
   </div>
-
+  <div class="video-player" ng-if="!$ctrl.video">
+  Please wait
+  </div>
   `,
   controller: 'videoplayerctrl'
 })
 
 .controller('videoplayerctrl', function() {
-  this.video = window.exampleVideoData[0];
+
 })

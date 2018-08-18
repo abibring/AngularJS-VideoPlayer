@@ -1,22 +1,19 @@
 angular.module('video-player')
 
 .component('app', {
-  bindings: {
-    appdata: '<'
-  },
   template: 
-    `<div id="app container" ng-model="appdata" >
+    `<div id="app container">
       <nav class="navbar" ng-controller="AppCtrl">
         <div class="col-md-6 col-md-offset-3">
-          <search><h5><em>search</em> component goes here</h5></search>
+          <search searchYoutube="$ctrl.result()"></search>
         </div>
       </nav>
       <div class="row">
         <div class="col-md-7">
-          <video-player><h5><em>videoPlayer</em> component goes here</h5></video-player>
+          <video-player video="$ctrl.currentVideo"></video-player>
         </div>
         <div class="col-md-5">
-          <video-list><h5><em>videoList</em> component goes here</h5></video-list>
+          <video-list videos="$ctrl.videos" onClick = "$ctrl.onClick"></video-list>
         </div>
       <div>
     </div>
@@ -25,13 +22,20 @@ angular.module('video-player')
 
   })
 
-.controller('AppCtrl', function() {
+.controller('AppCtrl', function(youTube) {
+  // this.search = youTube;
+  this.result = function(q) {
+    return youTube.search(q)
+  }
   this.selectVideo = function() {
     
   };
   this.searchResults = function() {
 
   };
+  this.onClick = function(video) {
+    this.video = video;
+  }
   this.currentVideo = window.exampleVideoData[0]
   this.videos = window.exampleVideoData;
 })
