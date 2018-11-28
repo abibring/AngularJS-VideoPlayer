@@ -1,6 +1,6 @@
-# AngularJS-YouTube-VideoPlayer
+# AngularJS-VideoPlayer
 
-This is a project I completed with another developer.  It is a video player app, written in AngularJS and uses the YouTube API for the data.
+This is a project I completed with another developer.  It is a video player app, written in AngularJS, using the YouTube API for the data.  You can watch videos without having to deal with any commercials (a VERY nice bonus).
 
  ## To Run Locally
  
