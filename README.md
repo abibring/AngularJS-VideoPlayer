@@ -1,2 +1,2 @@
 # ng-cast
-This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.
+This is a project I completed with another developer.  It is a video player app, written in AngularJS and uses the YouTube API for the data.
